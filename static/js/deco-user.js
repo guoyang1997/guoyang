@@ -36,6 +36,7 @@ function sendCodeChangeEmail($btn){
     });
 
 }
+
 //个人资料邮箱修改
 function changeEmailSubmit($btn){
 var verify = verifyDialogSubmit(
@@ -86,7 +87,7 @@ $(function(){
             cache: false,
             type: "POST",
             dataType:'json',
-            url:"/users/update/pwd/",
+            url:"",
             data:$('#jsResetPwdForm').serialize(),
             async: true,
             success: function(data) {
@@ -107,7 +108,6 @@ $(function(){
             }
         });
     });
-
     //个人资料头像
     $('.js-img-up').uploadPreview({ Img: ".js-img-show", Width: 94, Height: 94 ,Callback:function(){
         $('#jsAvatarForm').submit();

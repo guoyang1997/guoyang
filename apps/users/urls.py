@@ -1,13 +1,27 @@
 from django.urls import path,include
-from apps.users import views
+from apps.users.views import UploadImageView,UserinfoView,UpdatePwdView,SendEmailCodeView,UpdateEmailView,MyCourseView,MyFavOrgView,MyFavTeacherView,MyFavCourseView,MyMessageView
 
+app_name = 'users'
 
 urlpatterns = [
-
-    path('register/',views.RegisterView.as_view(),name='register'),
-    path('login/', views.user_login,name='login'),
-    path('forget/', views.ForgetPwdView.as_view(),name = 'forget_pwd'),
-    path('modify_pwd/', views.ModifyPwdView.as_view(), name='modify_pwd'),
-    path('out_login/', views.my_outlogin, name='outlogin'),
+    #用户个人中心修改密码
+    path("update/pwd/", UpdatePwdView.as_view(),name='update_pwd'),
+    #发送邮箱验证码
+    path("sendemail_code/", SendEmailCodeView.as_view(),name='sendemail_code'),
+    #用户图像上传
+    path("image/upload", UploadImageView.as_view(),name='image_upload'),
+    path('info/', UserinfoView.as_view(),name='user_info'),
+    #我的课程
+    path("mycourse/", MyCourseView.as_view(),name='mycourse'),
+    #修改邮箱
+    path("update_email/", UpdateEmailView.as_view(),name='update_email'),
+    # 我的收藏--授课讲师
+    path('myfav/teacher/', MyFavTeacherView.as_view(), name="myfav_teacher"),
+    # 我的收藏--课程机构
+    path('myfav/org/', MyFavOrgView.as_view(), name="myfav_org"),
+    #我的收藏--课程
+    path('myfav/course/', MyFavCourseView.as_view(), name="myfav_course"),
+    #我的消息
+    path('my_message/', MyMessageView.as_view(), name="my_message"),
 ]
 

@@ -100,6 +100,8 @@ class CourseInfoView(LoginRequiredMixin,View):
 
         # 资源
         all_resources = CourseResource.objects.filter(course=course)
+        course.students += 1
+        course.save()
         return render(request,'course-video.html',{
             'course':course,
             'all_resources':all_resources,
